@@ -33,6 +33,11 @@ app.use('/api/user', userRouter);
 // order router
 app.use('/api/order', orderRouter);
 
+// paypal router
+app.get('/api/config/paypal', (req, res) => {
+    res.send(process.env.PAYPAL_CLIENT_ID_SB || 'sb');
+});
+
 app.get('/', (req, res) => {
     res.status(200).send('Server is ready.');
 });

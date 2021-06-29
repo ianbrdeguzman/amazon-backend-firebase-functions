@@ -60,8 +60,6 @@ orderRouter.get('/mine', isAuthenticated, async (req, res, next) => {
             user: req.user._id, // from isAuthenticated middleware
         });
 
-        console.log(orders);
-
         // if order is found
         if (orders) {
             // send order back

@@ -23,8 +23,6 @@ const isAuthenticated = (req, res, next) => {
         // check if authorization header is present
         const authorization = req.headers.authorization;
 
-        console.log(req);
-
         // if authorization header is present
         if (authorization) {
             // get token from header
