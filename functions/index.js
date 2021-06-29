@@ -4,10 +4,9 @@ const mongoose = require('mongoose');
 
 const productRouter = require('./routers/productRouter.js');
 const userRouter = require('./routers/userRouter.js');
+const orderRouter = require('./routers/orderRouter.js');
 
-const dotenv = require('dotenv');
-
-dotenv.config();
+require('dotenv').config();
 
 // connect to MongoDB
 mongoose
@@ -22,6 +21,7 @@ mongoose
 
 // initialize express app
 const app = express();
+// use json
 app.use(express.json());
 
 // product router
@@ -29,6 +29,9 @@ app.use('/api/product', productRouter);
 
 // user router
 app.use('/api/user', userRouter);
+
+// order router
+app.use('/api/order', orderRouter);
 
 app.get('/', (req, res) => {
     res.status(200).send('Server is ready.');

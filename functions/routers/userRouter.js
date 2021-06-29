@@ -1,7 +1,7 @@
 const express = require('express');
 const User = require('../models/userModel.js');
 const bcrypt = require('bcryptjs');
-const generateToken = require('../utils/utils.js');
+const { generateToken, isAuthenticated } = require('../utils/utils.js');
 
 const userRouter = express.Router();
 
@@ -74,7 +74,7 @@ userRouter.post('/signin', async (req, res, next) => {
 });
 
 // update user profile route
-userRouter.put('/profile', async (req, res, next) => {
+userRouter.put('/profile', isAuthenticated, async (req, res, next) => {
     try {
         // deconstruct id, name, email, password from req.body;
         const { userId, name, email, password } = req.body;
