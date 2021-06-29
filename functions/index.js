@@ -1,6 +1,7 @@
 const functions = require('firebase-functions');
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const productRouter = require('./routers/productRouter.js');
 const userRouter = require('./routers/userRouter.js');
@@ -21,8 +22,12 @@ mongoose
 
 // initialize express app
 const app = express();
+
 // use json
 app.use(express.json());
+
+// use cors
+app.use(cors());
 
 // product router
 app.use('/api/product', productRouter);
